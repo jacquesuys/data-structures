@@ -3,9 +3,7 @@ var Tree = function(value) {
   newTree.value = value;
   _.extend(newTree, treeMethods);
 
-  // your code here
-  newTree.children = [];  // fix me
-
+  newTree.children = [];
   return newTree;
 };
 
@@ -20,15 +18,20 @@ treeMethods.contains = function(target, currentTree) {
 
   if (currentTree.value === target) {
     return true;
-  } else if(this.children) {
-    for (var i = 0; i < this.children.length; i++) {
-      return treeMethods.contains(target, this.children[i]);
+  } else if (currentTree.children && currentTree.children.length > 0) {
+    for (var i = 0; i < currentTree.children.length; i++) {
+      if (treeMethods.contains(target, currentTree.children[i])) {
+        return true;
+      }
     }
-  }
+  } 
   return false;
+  
 };
 
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * treeMethods.addChild() is a constant time
+ * treeMethods.contains() is a linear time
  */
