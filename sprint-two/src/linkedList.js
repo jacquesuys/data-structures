@@ -3,10 +3,11 @@ var LinkedList = function() {
   list.head = null;
   list.tail = null;
   list._length = 0;
+  var currentNode = list.head;
 
   list.addToTail = function(value) {
     var linkedListNode = new Node(value);
-    var currentNode = list.head;
+    currentNode = list.head;
 
     list.tail = linkedListNode;
     
@@ -28,22 +29,35 @@ var LinkedList = function() {
   };
 
   list.removeHead = function() {
-    var currentNode = this.head;
     var deletedNode = null;
+    currentNode = list.head;
     if (currentNode) {
       list.head =  currentNode.next;
       deletedNode = currentNode;
       currentNode = null;
       list._length--;
-
-      return deletedNode;
     }
+    return deletedNode.value;
   };
 
   list.contains = function(target) {
-  };
+    var doesContain = false;
 
-  console.log(list);
+    var recurser = function(current){
+      if (current) {
+        if (current.value === target) {
+          doesContain = true;
+          return;
+        } else if (current.next) {
+          recurser(current.next);
+        }
+      }
+    };
+
+    recurser(list.head);
+
+    return doesContain;
+  };
   return list;
 };
 
