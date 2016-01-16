@@ -1,5 +1,3 @@
-
-
 // ------------------------
 // Instantiate a new graph
 var Graph = function() {
@@ -9,9 +7,7 @@ var Graph = function() {
 // ------------------------
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
-  
   this.nodeList[node] = [];
-
   console.log(this.nodeList);
 };
 
@@ -19,8 +15,7 @@ Graph.prototype.addNode = function(node) {
 // Return a boolean value indicating if the value passed to contains is represented in the graph.
 Graph.prototype.contains = function(node) {
   for (var key in this.nodeList) {
-    // console.log(key);
-    if (key === node) {
+    if (Number(key) === node) {
       return true;
     }
   }
@@ -30,11 +25,7 @@ Graph.prototype.contains = function(node) {
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-  // for (var key in this.nodeList) {
-  //   if (this.nodeList[key] === node) {
-  //     delete this.nodeList[key];
-  //   }
-  // }
+
 };
 
 // ------------------------
@@ -43,7 +34,7 @@ Graph.prototype.hasEdge = function(fromNode, toNode) {
   // if (this.nodeList[fromNode].edge && this.nodeList[fromNode].edge === toNode) {
   //   if (this.nodeList[toNode].edge && this.nodeList[toNode].edge === fromNode) {
   //     return true;
-  //   } 
+  //   }
   // }
   // return false;
 };
@@ -69,5 +60,3 @@ Graph.prototype.forEachNode = function(cb) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
-
-
