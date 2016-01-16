@@ -4,7 +4,6 @@
 // Instantiate a new graph
 var Graph = function() {
   this.nodeList = {};
-  this.counter = 0;
 };
 
 // ------------------------
@@ -12,7 +11,6 @@ var Graph = function() {
 Graph.prototype.addNode = function(node) {
   
   this.nodeList[node] = [];
-  this.counter++;
 
   console.log(this.nodeList);
 };
