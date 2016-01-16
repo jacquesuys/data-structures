@@ -56,4 +56,9 @@ var getIndexBelowMaxForKey = function(str, max) {
 
 /*
  * Complexity: What is the time complexity of the above functions?
+ * get: O(1) / constant time
+ * set: O(1) / constant time
+ * each: O(n) / linear time
+ * checkLimit: O(1) / constant time
+ * getIndexBelowMaxForKey: O(n) / linear time
  */
