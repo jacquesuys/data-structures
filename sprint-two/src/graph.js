@@ -8,7 +8,6 @@ var Graph = function() {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this.nodeList[node] = [];
-  console.log(this.nodeList);
 };
 
 // ------------------------
@@ -25,26 +24,30 @@ Graph.prototype.contains = function(node) {
 // ------------------------
 // Removes a node from the graph.
 Graph.prototype.removeNode = function(node) {
-
+  if ( this.contains(node) ) {
+    delete this.nodeList[node];
+  }
 };
 
 // ------------------------
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
-  // if (this.nodeList[fromNode].edge && this.nodeList[fromNode].edge === toNode) {
-  //   if (this.nodeList[toNode].edge && this.nodeList[toNode].edge === fromNode) {
-  //     return true;
-  //   }
-  // }
-  // return false;
+  if (this.contains(fromNode) && this.contains(toNode)) {
+    if (this.nodeList[fromNode][0] === toNode &&
+      this.nodeList[toNode][0] === fromNode) {
+      return true;
+    }
+  }
+  return false;
 };
 
 // ------------------------
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
-  // this.nodeList[fromNode].edge = toNode;
-  // this.nodeList[toNode].edge = fromNode;
-  // console.log(this.nodeList);
+  if (this.contains(fromNode) && this.contains(toNode)) {
+    this.nodeList[fromNode].push(toNode);
+    this.nodeList[toNode].push(fromNode);
+  }
 };
 
 // ------------------------
